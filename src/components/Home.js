@@ -1,38 +1,42 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-
-const { REACT_APP_PUBLIC_URL } = process.env
+import fetchTodos from '../data/fetchApi'
+import List from './List'
 
 
 const Example = () => {
-    const { isLoading, error, data } = useQuery('repoData', () =>
-        fetch(`${REACT_APP_PUBLIC_URL}todoList`).then(res =>
-            res.json()
-        )
-    )
+
+    const { isLoading, error, data } = useQuery('repoData', fetchTodos)
 
     if (isLoading) return 'Loading...'
 
     if (error) return 'An error has occurred: ' + error.message
 
+
     const check = () => console.log(data)
 
     return (
-        <>
-            <div className='container-lg text-center'>
-                <div className='container mt-5'>
-                    <h1 className='display-1'>Todo List</h1>
-                    <h2 className='text-muted'>using JSON server, reactQuery</h2>
+        <div className='container bg-secondary' style={{ minHeight: "50vh" }}>
+            <hr />
+            <button className="btn btn-outline-info" onClick={check}>check</button>
+            <div className='d-flex justify-content-center'>
+                <div className="col-md-6 bg-light py-4 px-5">
+                    <h3>Thing Todo:</h3>
+                    {data.map((todo) => {
+                        return <List todo={todo} key={todo.id} />
+                    })}
                 </div>
-                <hr />
-                <div className='container'>
-                    <button className="btn btn-outline-info" onClick={check}>check</button>
-                </div>
-                {data.map((list, i) => {
-                    return <p key={i}>{list.todo}</p>
-                })}
             </div>
-        </>
+            <div className='d-flex justify-content-center mt-5'>
+                <div className='col-md-6'>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" placeholder="Enter Todo Item" aria-label="Enter Todo Item" aria-describedby="button-addon2" />
+                        <button className="btn btn-success" type="button" id="button-addon2">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     )
 }
 

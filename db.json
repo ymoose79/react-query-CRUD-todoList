@@ -1,0 +1,36 @@
+{
+  "todoList": [
+    {
+      "id": 1,
+      "item": "get a job",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "item": "work on react",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "item": "start php",
+      "completed": false
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
