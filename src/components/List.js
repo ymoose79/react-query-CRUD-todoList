@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const List = ({ todo }) => {
+const List = ({ todo, deleteTodo, taskComplete }) => {
     const { completed, id, item } = todo;
-    const check = (e) => console.log(e.target.value)
+
+    const [toggleState, settoggleState] = useState(completed)
+    const updateHandler = function () {
+        settoggleState(!toggleState);
+        const body = { id, item, completed: !toggleState }
+        taskComplete(body)
+    }
+    const deleteHandler = () => {
+        deleteTodo(id)
+    }
+
     return (
         <>
             <div className="input-group">
-                <input type="text" className="form-control" value={item} readOnly />
-                <button className="btn btn-outline-success" type="button">✅</button>
-                <button className="btn btn-outline-danger" type="button">❌</button>
+                <input type="text" className="form-control" readOnly value={item} />
+                {toggleState ?
+                    <button className="btn btn-outline-success" type="button" onClick={() => updateHandler()}>✅</button> : <button className="btn btn-outline-secondary" type="button" onClick={() => updateHandler()}>⏺</button>}
+                <button className="btn btn-outline-danger" type="button" onClick={() => deleteHandler()}>❌</button>
             </div>
         </>
     )

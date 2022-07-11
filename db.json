@@ -1,36 +1,24 @@
 {
   "todoList": [
     {
-      "id": 1,
-      "item": "get a job",
-      "completed": false
+      "item": "Items can be added",
+      "completed": false,
+      "id": 1
     },
     {
-      "id": 2,
-      "item": "work on react",
-      "completed": false
+      "item": "Saved on json-server npm package",
+      "completed": false,
+      "id": 2
     },
     {
       "id": 3,
-      "item": "start php",
-      "completed": false
-    }
-  ],
-  "posts": [
+      "item": "items can be checked off",
+      "completed": true
+    },
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "item": "when items checked off state has been saved",
+      "completed": false,
+      "id": 4
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
